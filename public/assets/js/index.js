@@ -53,8 +53,11 @@ var renderActiveNote = function() {
 var handleNoteSave = function() {
   var newNote = {
     title: $noteTitle.val(),
-    text: $noteText.val()
+    text: $noteText.val(),
+    id: notes.length + 1
   };
+  // let newNoteId = newNote.id;
+  // newNoteId = newNote.length + 1;
 
   saveNote(newNote).then(function(data) {
     getAndRenderNotes();
@@ -128,6 +131,7 @@ var renderNoteList = function(notes) {
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function() {
   return getNotes().then(function(data) {
+    notes = data;
     renderNoteList(data);
   });
 };
