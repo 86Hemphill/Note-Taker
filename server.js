@@ -31,6 +31,7 @@ app.delete("/api/notes/:id", (req, res) => {
     const note = notes.find(c => c.id === parseInt(req.params.id));
     const index = notes.indexOf(note);
     notes.splice(index, 1);
+    res.send("/api/notes");
 });
 
 app.listen(PORT, function () {
